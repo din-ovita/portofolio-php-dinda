@@ -10,17 +10,21 @@
             </a>
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item">
-                    <a href="<?php echo base_url('admin/siswa')?>" class="nav-link align-middle d-flex justify-content-center align-items-center px-0">
+                    <a href="<?php echo base_url('admin/siswa') ?>" class="nav-link align-middle d-flex justify-content-center align-items-center px-0">
                         <i class="fas fa-user"></i> <span class="ms-1 d-none d-sm-inline">Siswa</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link px-0 d-flex justify-content-center align-items-center align-middle">
-                    <i class="fas fa-user-tie"></i> <span class="ms-1 d-none d-sm-inline">Guru</span></a>
+                    <a href="<?php echo base_url('admin/guru') ?>" class="nav-link px-0 d-flex justify-content-center align-items-center align-middle">
+                        <i class="fas fa-user-tie"></i> <span class="ms-1 d-none d-sm-inline">Guru</span></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link px-0 d-flex justify-content-center align-items-center align-middle">
-                        <span class="ms-1 d-none d-sm-inline">Others</span> </a>
+                    <a href="<?php echo base_url('admin/kelas') ?>" class="nav-link px-0 d-flex justify-content-center align-items-center align-middle">
+                        <i class="fas fa-door-closed"></i> <span class="ms-1 d-none d-sm-inline">Kelas</span> </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/mapel') ?>" class="nav-link px-0 d-flex justify-content-center align-items-center align-middle">
+                        <i class="fas fa-door-closed"></i> <span class="ms-1 d-none d-sm-inline">Mapel</span> </a>
                 </li>
             </ul>
             <hr>
