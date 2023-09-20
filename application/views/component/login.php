@@ -10,20 +10,70 @@
     <title>Login</title>
 </head>
 
-<body class="d-flex align-items-center justify-content-center bg-body-tertiary">
-    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post" style="margin-top:8rem;">
-        <h1>Login to Your Account</h1>
-        <p class="mb-5">Complete the form below to login your account</p>
-        <div class="input-group mb-4">
-            <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
-            <input type="text" class="form-control" placeholder="Email..." name="email" aria-label="Username" aria-describedby="basic-addon1" required>
+<style>
+    body {
+        background: linear-gradient(to bottom right, #dbd3ef, #8b5cf6);
+        height: 100vh;
+        padding: 101px 0;
+    }
+
+    .card {
+        padding: 30px 50px;
+    }
+
+    label {
+        color: #a78bfa;
+    }
+
+    .btn {
+        background: #a78bfa;
+        font-weight: 500;
+        color: whitesmoke;
+        width: 160px;
+    }
+
+    .btn:hover {
+        background: #8b5cf6;
+        color: whitesmoke;
+    }
+
+    .btn:active {
+        background: #8b5cf6;
+        color: whitesmoke;
+    }
+
+    .signup {
+        color: #a78bfa;
+    }
+
+    .signup:hover {
+        color: #8b5cf6;
+    }
+</style>
+
+<body class="d-flex align-items-center justify-content-center">
+    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post" class="card bg-body-tertiary shadow-lg">
+        <h1 class="text-center">LOGIN</h1>
+        <p class="mb-3 text-center">Silahkan masuk ke akun Anda</p>
+        <div>
+            <label class="mb-2 fw-medium">Email</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                <input type="text" class="form-control" placeholder="Email..." name="email" aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
         </div>
-        <div class="input-group mb-0">
-            <span class="input-group-text" id="basic-addon1"> <i class="fas fa-eye-slash" onclick="togglePassword()" id="icon"></i>
-            </span>
-            <input type="password" class="form-control" placeholder="Password..." name="password" id="password" aria-label="Username" aria-describedby="basic-addon1" required>
+        <div>
+            <label class="mb-2 fw-medium">Password</label>
+            <div class="input-group mb-0">
+                <span class="input-group-text" id="basic-addon1"> <i class="fas fa-eye-slash" onclick="togglePassword()" id="icon"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Password..." name="password" id="password" aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
         </div>
-        <button style="width: 100%;" class="btn btn-primary mt-5" type="submit" name="submit">SIGN IN</button>
+        <button style="width: 100%;" class="btn mt-5" type="submit" name="submit">LOGIN</button>
+        <div class="mt-2">
+            <p class="fw-semibold fs-6">Untuk mendaftarkan akun baru -> <a href="<?php echo base_url('auth/register') ?>" class="signup">Register</a></p>
+        </div>
     </form>
 </body>
 <script>

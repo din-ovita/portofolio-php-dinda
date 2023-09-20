@@ -22,12 +22,9 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama </th>
-                    <th>Gender</th>
-                    <th>NIK</th>
-                    <th>No Telepon</th>
-                    <th>Alamat</th>
-                    <th>Mapel</th>
+                    <th>Tingkat Kelas </th>
+                    <th>Jurusan Kelas</th>
+                    <th>Wali Kelas</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -36,12 +33,9 @@
                 foreach ($kelas as $row) : $int++ ?>
                     <tr>
                         <td><?= $int++ ?></td>
-                        <td><?= $row->nama_kelas ?></td>
-                        <td><?= $row->gender ?></td>
-                        <td><?= $row->nik ?></td>
-                        <td><?= $row->no_hp ?></td>
-                        <td><?= $row->alamat ?></td>
-                        <td><?= $row->id_mapel ?></td>
+                        <td><?= $row->tingkat ?></td>
+                        <td><?= $row->jurusan ?></td>
+                        <td><?php echo walikelas($row->id_walikelas) ?></td>
                         <td class="text-center">
                             <a href="<?php echo base_url('admin/up_kelas/') . $row->id_kelas ?>" class="btn btn-primary">Update</a>
                             <button onclick="del(<?php echo $row->id_kelas ?>)" class="btn btn-danger">Delete</button>

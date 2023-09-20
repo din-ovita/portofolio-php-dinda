@@ -179,4 +179,52 @@ class Admin extends CI_Controller
         redirect(base_url('admin/mapel'));
     }
     // mapel
+
+    // kelas
+    public function kelas()
+    {
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
+        $this->load->view('kelas/kelas', $data);
+    }
+
+    public function add_kelas()
+    {
+        $this->load->view('kelas/tambah_kelas');
+    }
+
+    public function up_kelas($id)
+    {
+        $data['kelas'] = $this->m_model->get_by_id('kelas', 'id_kelas', $id)->result();
+        $this->load->view('kelas/update_kelas', $data);
+    }
+
+    public function aksi_add_kelas()
+    {
+        $data = [
+            'nama_kelas' => $this->input->post('kelas'),
+        ];
+        $this->m_model->tambah_data('kelas', $data);
+        redirect(base_url('admin/kelas'));
+    }
+    public function aksi_up_kelas()
+    {
+        $data = array(
+            'nama_kelas' => $this->input->post('kelas'),
+        );
+        $res = $this->m_model->up_data('kelas', $data, array('id_kelas' => $this->input->post('id_kelas')));
+        if ($res) {
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('admin/kelas'));
+        } else {
+            $this->session->set_flashdata('error', 'gagal...');
+            redirect(base_url('admin/kelas/up_kelas/' . $this->input->post('id_kelas')));
+        }
+    }
+
+    public function delete_kelas($id)
+    {
+        $this->m_model->delete('kelas', 'id_kelas', $id);
+        redirect(base_url('admin/kelas'));
+    }
+    // kelas
 }

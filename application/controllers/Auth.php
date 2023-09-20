@@ -32,7 +32,7 @@ class Auth extends CI_Controller
             $this->m_model->tambah_data('user', $data);
             redirect(base_url('auth'));
         } else {
-            redirect(base_url('auth/register'));
+            return;
         }
     }
 

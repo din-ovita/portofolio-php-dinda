@@ -11,20 +11,43 @@
 
 <style>
     img {
-        width: 36rem;
-        height: 20rem;
-        margin-top: 10rem;
+        width: 34rem;
+        height: 18rem;
+    }
+
+    body {
+        background: #f9fafb;
+        padding: 180px 100px;
+    }
+
+    .title{
+        color: #a78bfa;
+    }
+    .btn {
+        background: #a78bfa;
+        font-weight: 500;
+        color: whitesmoke;
+        width: 160px;
+    }
+    .btn:hover{
+        background: #8b5cf6;
+        color: whitesmoke;
+    }
+    .btn:active{
+        background: #8b5cf6;
+        color: whitesmoke;
     }
 </style>
 
-<body class="d-flex justify-center align-items-center px-5 gap-5">
+<body class="d-flex justify-center align-items-center gap-5">
+    <div>
+        <p class="mb-0 fs-5 title">Sistem Infomasi Sekolah</p>
+        <h1 class="fw-bold">Mengelola data sekolah lebih mudah dan efisien</h1>
+        <p style="text-align: justify"  class="lh-sm fw-medium mt-4">Solusi penyimpanan data modern, efisien, dan aman. Keamanan data kuat untuk melindungi informasi penting. Sistem manajemen data terpadu akan memungkinkan proses administratif menjadi lebih efisien.</p>
+        <a href="<?php echo base_url('auth'); ?>" class="btn mt-4">Get Strated</a>
+    </div>
     <div>
         <img src="https://www.unika.ac.id/wp-content/uploads/2022/10/ilmukomunikasi-title-768x455.png">
-    </div>
-    <div style="margin-top: 10rem;">
-        <h1 >Let's Join With Us</h1>
-        <p style="text-align: justify; font-weight:semibold;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga atque, eligendi quisquam in excepturi provident voluptatum soluta commodi deserunt quas quaerat quidem iste at suscipit, voluptatem corrupti illum reprehenderit odio?</p>
-        <a href="<?php echo base_url('auth'); ?>" class="btn btn-primary mt-5">Get Strated -></a>
     </div>
 </body>
 
