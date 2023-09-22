@@ -15,58 +15,91 @@
         border-radius: 8px;
         background: #a78bfa;
     }
+
+    .body .card1 {
+        padding: 20px;
+    }
+
+    .body h6,
+    body p {
+        color: white;
+    }
+
+    .body p {
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+    .body i {
+        font-size: 70px;
+        color: #e5e7eb;
+    }
+
+    .body .info {
+        background: #8b5cf6;
+        width: 100%;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding: 2px 20px;
+    }
+
+    .body a {
+        text-decoration: none;
+        font-weight: 500;
+        color: white;
+    }
 </style>
 
 <body class="d-flex gap-5">
     <?php $this->load->view('style/sidebar') ?>
     <div>
-        <div class="row mt-5 gap-3" style="margin-left: 1rem;">
-            <div class="col shadow-lg body">
-                <div>
+        <div class="d-flex mt-5 gap-4" style="margin-left: 1rem;">
+            <div class="shadow-lg body">
+                <div class="d-flex justify-content-center align-items-center gap-5 card1">
                     <div>
-                        <p>Jumlah Mapel</p>
-                        <p>10</p>
+                        <h6>Jumlah Mapel</h6>
+                        <p><?php echo $total_mapel ?></p>
                     </div>
                     <i class="fas fa-book"></i>
                 </div>
-                <div>
-                    <a href="">Info Lebih Lanjut</a>
+                <div class="info">
+                    <a href="<?php echo base_url('admin/mapel') ?>">Info Lebih Lanjut</a>
                 </div>
             </div>
-            <div class="col shadow-lg body">
-                <div>
+            <div class="shadow-lg body">
+                <div class="d-flex justify-content-center align-items-center gap-5 card1">
                     <div>
-                        <p>Jumlah Mapel</p>
-                        <p>10</p>
+                        <h6>Jumlah Guru</h6>
+                        <p><?php echo $total_guru ?></p>
                     </div>
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-user-tie"></i>
                 </div>
-                <div>
-                    <a href="">Info Lebih Lanjut</a>
+                <div class="info">
+                    <a href="<?php echo base_url('admin/guru') ?>">Info Lebih Lanjut</a>
                 </div>
             </div>
-            <div class="col shadow-lg body">
-                <div>
+            <div class="shadow-lg body">
+                <div class="d-flex justify-content-center align-items-center gap-5 card1">
                     <div>
-                        <p>Jumlah Mapel</p>
-                        <p>10</p>
+                        <h6>Jumlah Kelas</h6>
+                        <p><?php echo $total_kelas ?></p>
                     </div>
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-door-closed"></i>
                 </div>
-                <div>
-                    <a href="">Info Lebih Lanjut</a>
+                <div class="info">
+                    <a href="<?php echo base_url('admin/kelas') ?>">Info Lebih Lanjut</a>
                 </div>
             </div>
-            <div class="col shadow-lg body">
-                <div>
+            <div class="shadow-lg body">
+                <div class="d-flex justify-content-center align-items-center gap-5 card1">
                     <div>
-                        <p>Jumlah Mapel</p>
-                        <p>10</p>
+                        <h6>Jumlah Siswa</h6>
+                        <p><?php echo $total_siswa ?></p>
                     </div>
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-user"></i>
                 </div>
-                <div>
-                    <a href="">Info Lebih Lanjut</a>
+                <div class="info">
+                    <a href="<?php echo base_url('admin/siswa') ?>">Info Lebih Lanjut</a>
                 </div>
             </div>
         </div>

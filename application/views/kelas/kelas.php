@@ -11,39 +11,81 @@
     <title>Kelas</title>
 </head>
 
+<style>
+    thead tr th {
+        background: #8b5cf6;
+        padding: 10px;
+        color: white;
+        border: 1px solid white;
+    }
+
+    tbody tr td {
+        padding: 10px;
+        background: #f3f4f6;
+        border: 1px solid white;
+    }
+
+    .btn1 {
+        background: #8b5cf6;
+        font-weight: 500;
+        color: whitesmoke;
+        padding: 10px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+
+    .btn1:hover {
+        background: #7c3aed;
+        color: white;
+    }
+
+    .btn1:active {
+        background: #7c3aed;
+        color: white;
+    }
+</style>
+
 <body class="d-flex gap-5">
     <?php $this->load->view('style/sidebar') ?>
-    <div style="width: 80%; margin-right: 2rem;" class="mt-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <h1>Data Kelas</h1>
-            <a href="<?php echo base_url('admin/add_kelas') ?>" class="btn btn-primary">ADD</a>
-        </div>
-        <table class="table table-striped mt-4" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tingkat Kelas </th>
-                    <th>Jurusan Kelas</th>
-                    <th>Wali Kelas</th>
-                    <th class="text-center">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $int = 0;
-                foreach ($kelas as $row) : $int++ ?>
+    <div style="width: 80%; margin-right: 2rem;" class="mt-5">
+        <div class="shadow-lg p-5 rounded-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Data Kelas</h1>
+                <a href="<?php echo base_url('admin/add_kelas') ?>" class="btn1">ADD</a>
+            </div>
+            <table class="mt-4" style="width: 100%;">
+                <thead>
                     <tr>
-                        <td><?= $int++ ?></td>
-                        <td><?= $row->tingkat ?></td>
-                        <td><?= $row->jurusan ?></td>
-                        <td><?php echo walikelas($row->id_walikelas) ?></td>
-                        <td class="text-center">
-                            <a href="<?php echo base_url('admin/up_kelas/') . $row->id_kelas ?>" class="btn btn-primary">Update</a>
-                            <button onclick="del(<?php echo $row->id_kelas ?>)" class="btn btn-danger">Delete</button>
-                        </td>
+                        <th style="width: 20px;">No</th>
+                        <th>Tingkat Kelas </th>
+                        <th>Jurusan Kelas</th>
+                        <th>Wali Kelas</th>
+                        <th class="text-center">Action</th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php if ($kelas) : ?>
+                        <?php $int = 0;
+                        foreach ($kelas as $row) : $int++ ?>
+                            <tr>
+                                <td><?= $int ?></td>
+                                <td><?= $row->tingkat ?></td>
+                                <td><?= $row->jurusan ?></td>
+                                <td><?php echo walikelas($row->id_walikelas) ?></td>
+                                <td class="text-center">
+                                    <a href="<?php echo base_url('admin/up_kelas/') . $row->id_kelas ?>" class="btn btn-primary">Update</a>
+                                    <button onclick="del(<?php echo $row->id_kelas ?>)" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <tr class="text-center">
+                            <td colspan='5' class="p-3 fw-semibold" style="font-size: 20px;">Belum ada data</td>
+                        </tr>
+                    <?php endif ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
         function del(id) {

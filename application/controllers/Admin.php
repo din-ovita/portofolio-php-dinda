@@ -18,15 +18,19 @@ class Admin extends CI_Controller
         $data = [
             'menu' => 'dashboard'
         ];
+        $data['total_mapel'] = $this->m_model->get_data('mapel')->num_rows();
+        $data['total_guru'] = $this->m_model->get_data('guru')->num_rows();
+        $data['total_siswa'] = $this->m_model->get_data('siswa')->num_rows();
+        $data['total_kelas'] = $this->m_model->get_data('kelas')->num_rows();
         $this->load->view('data/dashboard', $data);
     }
 
     public function siswa()
     {
-        $data['result'] = $this->m_model->get_data('siswa')->result();
         $data = [
             'menu' => 'siswa'
         ];
+        $data['result'] = $this->m_model->get_data('siswa')->result();
         $this->load->view('siswa/siswa', $data);
     }
 
@@ -35,16 +39,17 @@ class Admin extends CI_Controller
         $data = [
             'menu' => 'siswa'
         ];
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('siswa/tambah_siswa', $data);
     }
 
     public function up_siswa($id)
     {
-        $data['siswa'] = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
-        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $data = [
             'menu' => 'siswa'
         ];
+        $data['siswa'] = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('siswa/update_siswa', $data);
     }
 
@@ -54,7 +59,7 @@ class Admin extends CI_Controller
             'nama' => $this->input->post('nama_lengkap'),
             'nisn' => $this->input->post('nisn'),
             'gender' => $this->input->post('gender'),
-            'id_kelas' => $this->input->post('id_kelas'),
+            'id_kelas' => $this->input->post('kelas'),
             'tempat_lahir' => $this->input->post('tempat_lahir'),
             'tgl_lahir' => $this->input->post('tgl_lahir'),
         ];
@@ -67,7 +72,7 @@ class Admin extends CI_Controller
             'nama' => $this->input->post('nama_lengkap'),
             'nisn' => $this->input->post('nisn'),
             'gender' => $this->input->post('gender'),
-            'id_kelas' => $this->input->post('id_kelas'),
+            'id_kelas' => $this->input->post('kelas'),
             'tempat_lahir' => $this->input->post('tempat_lahir'),
             'tgl_lahir' => $this->input->post('tgl_lahir'),
         );
@@ -89,10 +94,10 @@ class Admin extends CI_Controller
     // guru
     public function guru()
     {
-        $data['guru'] = $this->m_model->get_data('guru')->result();
         $data = [
             'menu' => 'guru'
         ];
+        $data['guru'] = $this->m_model->get_data('guru')->result();
         $this->load->view('guru/guru', $data);
     }
 
@@ -101,15 +106,17 @@ class Admin extends CI_Controller
         $data = [
             'menu' => 'guru'
         ];
+        $data['res'] = $this->m_model->get_data('mapel')->result();
         $this->load->view('guru/tambah_guru', $data);
     }
 
     public function up_guru($id)
     {
-        $data['guru'] = $this->m_model->get_by_id('guru', 'id_guru', $id)->result();
         $data = [
             'menu' => 'guru'
         ];
+        $data['guru'] = $this->m_model->get_by_id('guru', 'id_guru', $id)->result();
+        $data['res'] = $this->m_model->get_data('mapel')->result();
         $this->load->view('guru/update_guru', $data);
     }
 
@@ -120,7 +127,6 @@ class Admin extends CI_Controller
             'nik' => $this->input->post('nik'),
             'gender' => $this->input->post('gender'),
             'id_mapel' => $this->input->post('id_mapel'),
-            'alamat' => $this->input->post('alamat'),
             'no_hp' => $this->input->post('no_hp'),
         ];
         $this->m_model->tambah_data('guru', $data);
@@ -133,7 +139,6 @@ class Admin extends CI_Controller
             'nik' => $this->input->post('nik'),
             'gender' => $this->input->post('gender'),
             'id_mapel' => $this->input->post('id_mapel'),
-            'alamat' => $this->input->post('alamat'),
             'no_hp' => $this->input->post('no_hp'),
         );
         $res = $this->m_model->up_data('guru', $data, array('id_guru' => $this->input->post('id_guru')));
@@ -156,10 +161,10 @@ class Admin extends CI_Controller
     // mapel
     public function mapel()
     {
-        $data['mapel'] = $this->m_model->get_data('mapel')->result();
         $data = [
             'menu' => 'mapel'
         ];
+        $data['res'] = $this->m_model->get_data('mapel')->result();
         $this->load->view('mapel/mapel', $data);
     }
 
@@ -173,10 +178,10 @@ class Admin extends CI_Controller
 
     public function up_mapel($id)
     {
-        $data['mapel'] = $this->m_model->get_by_id('mapel', 'id_mapel', $id)->result();
         $data = [
             'menu' => 'mapel'
         ];
+        $data['mapel'] = $this->m_model->get_by_id('mapel', 'id_mapel', $id)->result();
         $this->load->view('mapel/update_mapel', $data);
     }
 
@@ -184,6 +189,7 @@ class Admin extends CI_Controller
     {
         $data = [
             'nama_mapel' => $this->input->post('mapel'),
+            'jenis_mapel' => $this->input->post('jenis_mapel'),
         ];
         $this->m_model->tambah_data('mapel', $data);
         redirect(base_url('admin/mapel'));
@@ -192,6 +198,7 @@ class Admin extends CI_Controller
     {
         $data = array(
             'nama_mapel' => $this->input->post('mapel'),
+            'jenis_mapel' => $this->input->post('jenis_mapel'),
         );
         $res = $this->m_model->up_data('mapel', $data, array('id_mapel' => $this->input->post('id_mapel')));
         if ($res) {
@@ -213,10 +220,10 @@ class Admin extends CI_Controller
     // kelas
     public function kelas()
     {
-        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $data = [
             'menu' => 'kelas'
         ];
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('kelas/kelas', $data);
     }
 
@@ -225,22 +232,26 @@ class Admin extends CI_Controller
         $data = [
             'menu' => 'kelas'
         ];
+        $data['res'] = $this->m_model->get_data('guru')->result();
         $this->load->view('kelas/tambah_kelas', $data);
     }
 
     public function up_kelas($id)
     {
-        $data['kelas'] = $this->m_model->get_by_id('kelas', 'id_kelas', $id)->result();
         $data = [
             'menu' => 'kelas'
         ];
+        $data['res'] = $this->m_model->get_data('guru')->result();
+        $data['kelas'] = $this->m_model->get_by_id('kelas', 'id_kelas', $id)->result();
         $this->load->view('kelas/update_kelas', $data);
     }
 
     public function aksi_add_kelas()
     {
         $data = [
-            'nama_kelas' => $this->input->post('kelas'),
+            'jurusan' => $this->input->post('jurusan'),
+            'tingkat' => $this->input->post('tingkat'),
+            'id_walikelas' => $this->input->post('id_walikelas'),
         ];
         $this->m_model->tambah_data('kelas', $data);
         redirect(base_url('admin/kelas'));
@@ -248,7 +259,9 @@ class Admin extends CI_Controller
     public function aksi_up_kelas()
     {
         $data = array(
-            'nama_kelas' => $this->input->post('kelas'),
+            'jurusan' => $this->input->post('jurusan'),
+            'tingkat' => $this->input->post('tingkat'),
+            'id_walikelas' => $this->input->post('id_walikelas'),
         );
         $res = $this->m_model->up_data('kelas', $data, array('id_kelas' => $this->input->post('id_kelas')));
         if ($res) {

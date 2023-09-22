@@ -19,3 +19,13 @@ function walikelas($id)
         return $sql;
     }
 }
+function mapel($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $res = $ci->db->where('id_mapel', $id)->get('mapel');
+    foreach ($res->result() as $g) {
+        $sql = $g->nama_mapel;
+        return $sql;
+    }
+}

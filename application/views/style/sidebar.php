@@ -28,13 +28,15 @@
 
     .aktif{
         background: #8b5cf6;
+        /* v-500 */
         width: 150px;
     }
 
     .log a {
         text-decoration: none;
         display: flex;
-        color: #e5e7eb;
+        color: #e5e7eb; 
+        /* v-100 */
         font-weight: 600;
         gap: 10px;
     }

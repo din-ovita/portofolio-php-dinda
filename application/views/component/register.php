@@ -109,28 +109,4 @@
     }
 </script>
 
-<script>
-    $('#myForm').submit(function(e) {
-        e.preventDefault();
-
-        var password = $('#password').val();
-
-        if (password.length < 8) {
-            Swal.fire(
-                'Password Invalid',
-                'Password minimal 8 karakter',
-                'warning'
-            )
-            // swal({
-            //     title: "Validation Error",
-            //     text: "Password must be at least 8 characters long.",
-            //     icon: "error",
-            // });
-        } else {
-            $('#myForm').off('submit');
-            $('#myForm').submit();
-        }
-    });
-</script>
-
 </html>

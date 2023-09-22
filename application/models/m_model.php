@@ -29,4 +29,8 @@ class m_model extends CI_Model
         $data = $this->db->delete($table, array($field => $id));
         return $data;
     }
+    public function total($table)
+    {
+        return $this->db->get($table)->num_rows();
+    }
 }

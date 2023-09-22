@@ -28,11 +28,15 @@ class Auth extends CI_Controller
             'password' => md5($password),
             'role' => 'admin',
         ];
-        if (strlen($password) >= 8) {
+        $p = ['email' => $this->input->post('email')];
+        $query = $this->m_model->get_where('user', $p);
+        $result = $query->row_array();
+        if (strlen($password) >= 8 && empty($result)) {
+            // echo var_dump($result);
             $this->m_model->tambah_data('user', $data);
             redirect(base_url('auth'));
         } else {
-            return;
+            redirect(base_url('auth/register'));
         }
     }
 
@@ -62,5 +66,11 @@ class Auth extends CI_Controller
         } else {
             redirect(base_url() . "auth");
         }
+    }
+
+    function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('auth'));
     }
 }
